@@ -1,0 +1,14 @@
+{
+    "patches": [
+        {
+            "label": "2025-12-02_16-35-11",
+            "content": "@@ -1053,193 +1053,8 @@\n or%0A%0A\n-class Pix(Pagamento): #acoplamento forte%0A    def __init__(self, chave: int, banco: str):%0A        super().__init__(valor, descricao)%0A        self.chave = chave%0A        self.banco= banco%0A\n %0Adef\n",
+            "lines": "49"
+        },
+        {
+            "label": "2025-12-07_22-02-48",
+            "content": "from abc import ABC, abstractmethod\n\nclass Pagamento(ABC):\n    def __init__(self, valor: float, descricao: str):\n        self.valor: float = valor\n        self.descricao = descricao\n    \n    def resumo(self) -> str:\n        return f\"Pagamento de R$ {self.valor}: {self.descricao}\"\n    \n    def validar_valor(self) -> None:\n        if self.valor <= 0:\n            raise ValueError(\"falhou: valor invalido\")\n    \n    @abstractmethod\n    def processar(self):\n        pass\n    \nclass CartaoCredito(Pagamento): #acoplamento forte\n    def __init__(self, num: int, nome: str, limite: float, valor: float, descricao: str):\n        super().__init__(valor, descricao)\n        self.num = num\n        self.nome = nome\n        self.limite: float = limite\n\n    def resumo(self):\n        return \"Cartao de Credito: \" + super().resumo()\n\n    def get_limite(self):\n        return self.limite\n\n    def processar(self):\n        if self.valor > self.limite:\n            print(\"pagamento recusado por limite insuficiente\")\n            return\n        self.limite -= self.valor\n\nclass Pix(Pagamento): #acoplamento forte\n    def __init__(self, chave: int, banco: str):\n        super().__init__(valor, descricao)\n        self.chave = chave\n        self.banco= banco\n\ndef processar_pagamentos(pagamentos: list[Pagamento]):\n    for pag in pagamentos:\n        pag.validar_valor()\n        print(pag.resumo())\n        pag.processar()\n        if isinstance(pag, CartaoCredito):\n            print(pag.get_limite())\n\npag: Pagamento = CartaoCredito(nome= \"David\", descricao=\"Coxinha\", limite=500.00, num=123, valor=0.50)\npagamentos: list[Pagamento] = [pag]\nprocessar_pagamentos(pagamentos)",
+            "lines": "54"
+        }
+    ]
+}

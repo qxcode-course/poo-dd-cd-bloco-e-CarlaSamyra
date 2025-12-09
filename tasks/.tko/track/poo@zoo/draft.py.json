@@ -2,8 +2,103 @@
     "patches": [
         {
             "label": "2025-12-02_15-01-20",
-            "content": "",
+            "content": "@@ -1,632 +0,0 @@\n-from typing import Any%0Afrom abc import ABC, abstractmethod%0A%0Aclass Animal:%0A    def __init__ (self, nome: str):%0A        self.nome = nome %0A%0A    @abstractmethod%0A    def fazer_som(self):%0A        pass%0A%0A    @abstractmethod%0A    def mover(self):%0A        pass%0A%0A    def apresentar_nome (self):%0A        return f%22Eu sou um(a) %7Bself.nome%7D%22%0A%0Aclass Gato (Animal):%0A    def fazer_som (self):%0A        print (%22MIAUUU%22)%0A    %0A    def mover (self):%0A        print (%22Gatinho andou e arranhou o sof%C3%A1%22)%0A%0Aclass Cachorro (Animal):%0A    def fazer_som (self):%0A        print (%22MIAUUU%22)%0A    %0A    def mover (self):%0A        print (%22Gatinho andou e arranhou o sof%C3%A1%22)%0A%0A%0A\n",
             "lines": "0"
+        },
+        {
+            "label": "2025-12-09_16-14-48",
+            "content": "@@ -470,11 +470,163 @@\n sof%C3%A1%22)%0A%0A\n+class Cachorro (Animal):%0A    def fazer_som (self):%0A        print (%22MIAUUU%22)%0A    %0A    def mover (self):%0A        print (%22Gatinho andou e arranhou o sof%C3%A1%22)\n %0A%0A%0A\n",
+            "lines": "33"
+        },
+        {
+            "label": "2025-12-09_16-15-04",
+            "content": "@@ -474,18 +474,7 @@\n %22)%0A%0A\n-print(Gato)\n %0A%0A%0A\n",
+            "lines": "28"
+        },
+        {
+            "label": "2025-12-09_16-15-18",
+            "content": "@@ -345,61 +345,8 @@\n l):%0A\n-    def __init__ (self):%0A        self.nome = %22Gato%22%0A%0A\n     \n@@ -474,31 +474,18 @@\n %22)%0A%0A\n-%0A%0Agato = Gato%0A\n print\n- (g\n+(G\n ato)%0A\n+%0A%0A\n",
+            "lines": "28"
+        },
+        {
+            "label": "2025-12-09_16-18-52",
+            "content": "@@ -527,88 +527,31 @@\n %22)%0A%0A\n-Apresentar: list%5BAnimal%5D = Gato()%0Afor animal in Apresentar:%0A    print (animal.nome\n+%0A%0Agato = Gato%0Aprint (gato\n )%0A\n",
+            "lines": "32"
+        },
+        {
+            "label": "2025-12-09_16-23-56",
+            "content": "@@ -525,62 +525,8 @@\n f%C3%A1%22)\n-%0A    %0A    def __str__ (self):%0A        return %22Gatinho%22\n %0A%0AAp\n",
+            "lines": "31"
+        },
+        {
+            "label": "2025-12-09_16-26-35",
+            "content": "@@ -323,138 +323,8 @@\n e%7D%22%0A\n-    %0A%0Adef animal (animal: Animal):%0A    animal.fazer_som()%0A    animal.mover()%0A    animal.apresentar_nome()%0A    print(animal.nome)%0A%0A\n %0Acla\n@@ -386,27 +386,24 @@\n .nome = %22Gat\n-inh\n o%22%0A%0A    def \n",
+            "lines": "34"
+        },
+        {
+            "label": "2025-12-09_16-30-07",
+            "content": "@@ -1,803 +1,157 @@\n-from typing import Any%0Afrom abc import ABC, abstractmethod%0A%0Aclass Animal:%0A    def __init__ (self, nome: str):%0A        self.nome = nome %0A%0A    @abstractmethod%0A    def fazer_som(self):%0A        pass%0A%0A    @abstractmethod%0A    def mover(self):%0A        pass%0A%0A    def apresentar_nome (self):%0A        return f%22Eu sou um(a) %7Bself.nome%7D%22%0A    %0A%0Adef animal (animal: Animal):%0A    animal.fazer_som()%0A    animal.mover()%0A    animal.apresentar_nome()%0A    print(animal.nome)%0A%0A%0Aclass Gato (Animal):%0A    def __init__ (self):%0A        self.nome = %22Gatinho%22%0A%0A    def fazer_som (self):%0A        print (%22MIAUUU%22)%0A    %0A    def mover (self):%0A        print (%22Gatinho andou e arranhou o sof%C3%A1%22)%0A    %0A    def __str__ (self):%0A        return %22Gatinho%22%0A%0Aapresentar: list%5BAnimal%5D = Gato()%0Afor animais in apresentar:%0A    print (animais\n+@@ -710,17 +710,17 @@%0A tinho%2522%250A%250A%0A-a%0A+A%0A presenta%0A@@ -757,15 +757,14 @@%0A nima%0A-is%0A+l%0A  in %0A-a%0A+A%0A pres%0A@@ -786,17 +786,16 @@%0A t (anima%0A-is%0A+l%0A \n .nome)\n+%250A\n %0A\n",
+            "lines": "18"
+        },
+        {
+            "label": "2025-12-09_16-32-03",
+            "content": "@@ -489,35 +489,24 @@\n init__ (self\n-, nome: str\n ):%0A        s\n@@ -509,29 +509,28 @@\n    s\n-uper().__init__(nome)\n+elf.nome = %22Gatinho%22\n %0A%0A  \n@@ -742,25 +742,16 @@\n  = Gato(\n-%22Gatinho%22\n )%0Afor an\n@@ -771,24 +771,31 @@\n sentar:%0A    \n+print (\n animais.nome\n@@ -794,9 +794,10 @@\n ais.nome\n+)\n %0A\n",
+            "lines": "42"
+        },
+        {
+            "label": "2025-12-09_16-49-07",
+            "content": "@@ -749,17 +749,16 @@\n imal%5D = \n-%5B\n Gato(%22Ga\n@@ -764,17 +764,16 @@\n atinho%22)\n-%5D\n %0Afor ani\n",
+            "lines": "42"
+        },
+        {
+            "label": "2025-12-09_16-51-41",
+            "content": "@@ -666,16 +666,70 @@\n o sof%C3%A1%22)\n+%0A    %0A    def __str__ (self):%0A        return %22Gatinho%22\n %0A%0Aaprese\n@@ -794,30 +794,24 @@\n sentar:%0A    \n-print(\n animais.nome\n@@ -814,50 +814,5 @@\n nome\n-)%0A    animais.fazer_som()%0A    animais.mover()\n %0A\n",
+            "lines": "42"
+        },
+        {
+            "label": "2025-12-09_16-56-15",
+            "content": "@@ -319,16 +319,146 @@\n .nome%7D%22%0A\n+    %0A%0Adef animal (animal: Animal):%0A    animal.fazer_som()%0A    animal.mover()%0A    animal.apresentar_nome()%0A    print(animal.nome)%0A%0A\n %0Aclass G\n@@ -672,181 +672,8 @@\n %22)%0A%0A\n-def apresentar (animal:Animal):%0A    animal.apresentar_nome()%0A    animal.fazer_som()%0A    animal.mover()    %0A    print (f%22Tipo: %7Btype(animal).__name__%7D%22)%0A    print(%22-%22 * 20)%0A%0A\n apre\n@@ -713,17 +713,16 @@\n inho%22)%5D%0A\n-%0A\n for anim\n@@ -748,24 +748,68 @@\n     \n-a\n pr\n-esentar(animais\n+int(animais.nome)%0A    animais.fazer_som()%0A    animais.mover(\n )%0A\n",
+            "lines": "41"
+        },
+        {
+            "label": "2025-12-09_17-02-47",
+            "content": "@@ -712,22 +712,25 @@\n * 20)%0A%0Aa\n-nimais\n+presentar\n : list%5BA\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-03-10",
+            "content": "@@ -763,17 +763,18 @@\n or anima\n-l\n+is\n  in apre\n@@ -801,11 +801,12 @@\n ar(anima\n-l\n+is\n )%0A\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-03-43",
+            "content": "@@ -769,22 +769,25 @@\n mal in a\n-nimais\n+presentar\n :%0A    ap\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-04-59",
+            "content": "@@ -284,23 +284,23 @@\n         \n-print (\n+return \n f%22Eu sou\n@@ -322,18 +322,9 @@\n me%7D%22\n-)%0A        \n+%0A\n %0Acla\n@@ -710,9 +710,9 @@\n %22 * \n-1\n+2\n 0)%0A%0A\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-08-13",
+            "content": "@@ -69,14 +69,8 @@\n imal\n- (ABC)\n :%0A  \n@@ -320,16 +320,24 @@\n nome%7D%22)%0A\n+        \n %0Aclass G\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-08-52",
+            "content": "@@ -549,224 +549,8 @@\n %22)%0A%0A\n-class Cachorro (Animal):%0A    def __init__ (self, nome:str):%0A        super().__init__(nome)%0A    %0A    def fazer_som (self):%0A        print (%22AUAUAUUU%22)%0A%0A    def mover (self):%0A        print (%22O doguinho rolou no ch%C3%A3o%22)%0A%0A\n def \n@@ -762,30 +762,8 @@\n ho%22)\n-, Cachorro(%22Doguinho%22)\n %5D%0A%0Af\n",
+            "lines": "39"
+        },
+        {
+            "label": "2025-12-09_17-11-04",
+            "content": "@@ -765,241 +765,8 @@\n %22)%0A%0A\n-class Vaca (Animal):%0A    def __init__ (self, nome:str):%0A        super().__init__(nome)%0A    %0A    def fazer_som (self):%0A        print (%22MUUUUUU%22)%0A    %0A    def mover (self):%0A        print (%22Vaquinha saiu do lugar para ir comer grama%22)%0A%0A\n def \n@@ -1000,26 +1000,8 @@\n ho%22)\n-, Vaca(%22Vaquinha%22)\n %5D%0A%0Af\n",
+            "lines": "49"
+        },
+        {
+            "label": "2025-12-09_17-16-37",
+            "content": "from typing import Any\nfrom abc import ABC, abstractmethod\n\nclass Animal (ABC):\n    def __init__ (self, nome: str):\n        self.nome = nome \n\n    @abstractmethod\n    def fazer_som(self):\n        pass\n\n    @abstractmethod\n    def mover(self):\n        pass\n\n    def apresentar_nome (self):\n        print (f\"Eu sou um(a) {self.nome}\")\n\nclass Gato (Animal):\n    def __init__ (self, nome: str):\n        super().__init__(nome)\n\n    def fazer_som (self):\n        print (\"MIAUUU\")\n    \n    def mover (self):\n        print (\"Gatinho andou e arranhou o sof\u00e1\")\n\nclass Cachorro (Animal):\n    def __init__ (self, nome:str):\n        super().__init__(nome)\n    \n    def fazer_som (self):\n        print (\"AUAUAUUU\")\n\n    def mover (self):\n        print (\"O doguinho rolou no ch\u00e3o\")\n\nclass Vaca (Animal):\n    def __init__ (self, nome:str):\n        super().__init__(nome)\n    \n    def fazer_som (self):\n        print (\"MUUUUUU\")\n    \n    def mover (self):\n        print (\"Vaquinha saiu do lugar para ir comer grama\")\n\ndef apresentar (animal:Animal):\n    animal.apresentar_nome()\n    animal.fazer_som()\n    animal.mover()    \n    print (f\"Tipo: {type(animal).__name__}\")\n    print(\"-\" * 10)\n\nanimais: list[Animal] = [Gato(\"Gatinho\"), Cachorro(\"Doguinho\"), Vaca(\"Vaquinha\")]\n\nfor animal in animais:\n    apresentar(animal)\n",
+            "lines": "59"
         }
     ]
 }
