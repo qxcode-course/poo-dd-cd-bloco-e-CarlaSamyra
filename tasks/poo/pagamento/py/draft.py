@@ -1,54 +1,47 @@
 from abc import ABC, abstractmethod
 
 class Pagamento(ABC):
-    def __init__(self, valor: float, descricao: str):
-        self.valor: float = valor
-        self.descricao = descricao
+    def __init__ (self, valor: float, descricao: str):
+        self.valor: float = valor 
+        self.descricao: str = descricao
     
-    def resumo(self) -> str:
+    def resumo (self):
         return f"Pagamento de R$ {self.valor}: {self.descricao}"
     
-    def validar_valor(self) -> None:
+    def validar_valor (self):
         if self.valor <= 0:
-            raise ValueError("falhou: valor invalido")
-    
+            raise ValueError("Valor inválido")
+        
     @abstractmethod
-    def processar(self):
+    def processar (self):
         pass
-    
-class CartaoCredito(Pagamento): #acoplamento forte
-    def __init__(self, num: int, nome: str, limite: float, valor: float, descricao: str):
+
+class CartaoCredito (Pagamento):
+    def __init__ (self, numero: int, titular: str, limite: float, valor: float, descricao: str):
         super().__init__(valor, descricao)
-        self.num = num
-        self.nome = nome
+        self.numero = numero
+        self.titular = titular
         self.limite: float = limite
-
-    def resumo(self):
-        return "Cartao de Credito: " + super().resumo()
-
-    def get_limite(self):
+    
+    def resumo (self):
+        return f"Cartão de Crédito: " + super().resumo()
+    
+    def get_limite (self):
         return self.limite
-
-    def processar(self):
+    
+    def processar (self):
         if self.valor > self.limite:
-            print("pagamento recusado por limite insuficiente")
-            return
+            print ("Erro, pagamento recusado. Limite insuficiente")
         self.limite -= self.valor
 
-class Pix(Pagamento): #acoplamento forte
-    def __init__(self, chave: int, banco: str):
-        super().__init__(valor, descricao)
-        self.chave = chave
-        self.banco= banco
-
-def processar_pagamentos(pagamentos: list[Pagamento]):
+def processar_pagamentos (pagamentos: list [Pagamento]):
     for pag in pagamentos:
         pag.validar_valor()
         print(pag.resumo())
         pag.processar()
-        if isinstance(pag, CartaoCredito):
-            print(pag.get_limite())
+        if isinstance (pag, CartaoCredito):
+            print (pag.get_limite())
 
-pag: Pagamento = CartaoCredito(nome= "David", descricao="Coxinha", limite=500.00, num=123, valor=0.50)
-pagamentos: list[Pagamento] = [pag]
+pag: Pagamento = CartaoCredito (titular = "Carla", descricao = "Salgadinho", limite = 10.00, numero = 145, valor = 4.00)
+pagamentos: list [Pagamento] = [pag]
 processar_pagamentos(pagamentos)
