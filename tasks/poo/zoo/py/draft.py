@@ -46,6 +46,16 @@ class Vaca (Animal):
     def mover (self):
         print ("Vaquinha saiu do lugar para ir comer grama")
 
+class Leao (Animal):
+    def __init__ (self, nome:str):
+        super().__init__(nome)
+    
+    def fazer_som (self):
+        print ("ROOOOOARR")
+    
+    def mover (self):
+        print ("Lion subiu na pedra para rugir bem alto")
+
 def apresentar (animal:Animal):
     animal.apresentar_nome()
     animal.fazer_som()
@@ -53,7 +63,7 @@ def apresentar (animal:Animal):
     print (f"Tipo: {type(animal).__name__}")
     print("-" * 10)
 
-animais: list[Animal] = [Gato("Gatinho"), Cachorro("Doguinho"), Vaca("Vaquinha")]
+animais: list[Animal] = [Gato("Gatinho"), Cachorro("Doguinho"), Vaca("Vaquinha"), Leao("Lion") ]
 
 for animal in animais:
     apresentar(animal)
