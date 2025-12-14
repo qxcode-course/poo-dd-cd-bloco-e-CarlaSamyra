@@ -17,54 +17,52 @@ class Pagamento(ABC):
         pass
 
 class CartaoCredito (Pagamento):
-    def __init__ (self, numero: int, titular: str, limite: float, valor: float, descricao: str):
+    def __init__ (self, valor: float, descricao: str, numero: str, titular: str, limite: float):
         super().__init__(valor, descricao)
         self.numero = numero
         self.titular = titular
         self.limite: float = limite
     
-    def resumo (self):
-        return f"Cartão de Crédito: " + super().resumo()
-    
-    def get_limite (self):
-        return self.limite
-    
     def processar (self):
         if self.valor > self.limite:
-            print ("Erro, pagamento recusado. Limite insuficiente")
-        self.limite -= self.valor
+            print (f"Erro: Limite insuficiente no cartão {self.numero}")
+        else:
+            self.limite -= self.valor
+            print (f"Pagamento aprovado no cartão. \n[Titular: {self.titular}. Limite restante: {self.limite}]")
 
 class Pix (Pagamento):
-    def __init__ (self, chave: int, banco: str, descricao: str, valor: float):
+    def __init__ (self, valor: float, descricao: str, chave: str, banco: str):
         super().__init__(valor, descricao)
         self.chave = chave 
         self.banco = banco
     
     def processar (self):
-        if self.valor < 0:
-            print("Erro, valor de pagamento inválido")
-        else:
-            print(f"Pagamento realizado. Chave: {self.chave}, banco: {self.banco}")
+            print(f"PIX enviado via {self.banco} usando a chave {self.chave}")
 
 class Boleto (Pagamento):
-    def __init__ (self, codigo: float, vencimento: str, descricao: str, valor: float):
+    def __init__ (self, valor: float, descricao: str, codigo: str, vencimento: str):
         super().__init__(valor, descricao)
         self.codigo = codigo
         self.vencimento = vencimento
     
     def processar (self):
-        print ("Boleto gerado, aguarde o processamento...")
+        print ("Boleto gerado. Aguardando pagamento...")
     
-def processar_pagamentos (pagamentos: list [Pagamento]):
+def processar_pagamentos(pagamentos: list[Pagamento]):
     for pag in pagamentos:
         pag.validar_valor()
-        print(pag.resumo())
+        tipo = type(pag).__name__.capitalize()
+        print (pag.resumo())
+        print ("Detalhes do pagamento:")
+        print(f"Tipo: {tipo}")
+        print(f"Valor: R$ {pag.valor:.2f}")
+        print(f"Descrição: {pag.descricao}") 
         pag.processar()
-        if isinstance (pag, CartaoCredito):
-            print (pag.get_limite())
+        print("-" * 50)
+        print()
 
-pag: Pagamento = CartaoCredito(titular = "Carla", descricao = "Salgadinho", limite = 10.00, numero = 145, valor = 5.00)
-pag1: Pagamento = Pix (chave = 123, banco = "inter", descricao = "esportiva", valor = 10.00)
-pag2: Pagamento = Boleto (codigo = 4888.57, vencimento = "17/05", descricao = "camisa", valor = 10.00)
-pagamentos: list [Pagamento] = [pag, pag1, pag2]
+pagamentos: list [Pagamento] = [Pix (valor = 200, descricao = "Tênis de corrida", chave = "pessoa@email.com", banco = "Banco Inter"), 
+                                CartaoCredito(valor = 400, descricao = "Ingresso para show", numero = "3333 2222 1111 0000", titular = "Maria Silva", limite = 500),
+                                Boleto (valor = 1000, descricao = "Pacote de viagem", codigo = "123456789", vencimento = "17-05-2026"),
+                                CartaoCredito(valor = 900, descricao = "Tablet", numero = "4444 5555 6666 0000", titular = "Davi Silva", limite = 700)]
 processar_pagamentos(pagamentos)
