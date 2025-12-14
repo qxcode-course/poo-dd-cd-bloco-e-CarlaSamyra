@@ -51,7 +51,7 @@ class Boleto (Pagamento):
 def processar_pagamentos(pagamentos: list[Pagamento]):
     for pag in pagamentos:
         pag.validar_valor()
-        tipo = type(pag).__name__.capitalize()
+        tipo = type(pag).__name__
         print (pag.resumo())
         print ("Detalhes do pagamento:")
         print(f"Tipo: {tipo}")
