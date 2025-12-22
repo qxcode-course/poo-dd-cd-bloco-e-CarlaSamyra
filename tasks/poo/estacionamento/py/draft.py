@@ -16,7 +16,7 @@ class Veiculo (ABC):
         return f"{tipo} : {id} : {self.hora_entrada}"
     
     def setEntrada(self, horaEntrada: int):
-        self.horaEntrada = horaEntrada
+        self.hora_entrada = horaEntrada
         return horaEntrada
     
     def get_id (self):
@@ -24,9 +24,6 @@ class Veiculo (ABC):
     
     def get_tipo (self):
         return self.tipo
-    
-    def set_entrada (self, horaEntrada: int):
-        self.hora_entrada = horaEntrada
 
 class Estacionamento: 
     def __init__ (self, hora_atual: int):
